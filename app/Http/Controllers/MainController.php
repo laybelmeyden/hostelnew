@@ -7,6 +7,7 @@ use App\Rev;
 use App\Uslug;
 use App\Nomer;
 use App\Slider;
+use App\Galler;
 
 class MainController extends Controller
 {
@@ -35,6 +36,14 @@ class MainController extends Controller
     {
       return view('pages.pravila');
     }
+    public function bronirovanie()
+    {
+      return view('pages.bronirovanie');
+    }
+    public function tour()
+    {
+      return view('pages.tour');
+    }
     public function dosto()
     {
       return view('pages.dosto');
@@ -58,7 +67,9 @@ class MainController extends Controller
     }
     public function photo()
     {
-      return view('pages.photo');
+      $galler = Galler::latest()
+      ->get();
+      return view('pages.photo', compact('galler'));
     }
     public function domp()
     {
@@ -67,6 +78,23 @@ class MainController extends Controller
     public function solonomer(Nomer $solo)
     {
       return view('pages.solonomer', compact('solo'));
+    }
+    public function contacts(Request $request)
+      {
+      $data= array(
+      'name' => request('name'),
+      'email' => request('email'),
+      'tel' => request('tel'),
+      'message2' => request('message'),
+      );
+    // return $data;
+    \Mail::send('email.mail1', $data, function($message1) use ($data)
+    {
+        $mail_admin = env('MAIL_ADMIN');
+        $message1->from($data['email'], $data['name'], $data['message2']);
+        $message1->to($mail_admin, 'For Admin')->subject('Message from site');
+    });
+    return redirect('');
     }
     
 }

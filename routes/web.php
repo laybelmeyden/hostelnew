@@ -21,6 +21,10 @@ Route::get('/serv', 'MainController@serv');
 Route::get('/photo', 'MainController@photo');
 Route::get('/nomer{solo}', 'MainController@solonomer');
 Route::get('/domp', 'MainController@domp');
+Route::get('/bronirovanie', 'MainController@bronirovanie');
+Route::get('/tour', 'MainController@tour');
+
+Route::post('/contacts', 'MainController@contacts');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

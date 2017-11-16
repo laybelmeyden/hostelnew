@@ -43,7 +43,7 @@
     <input type='text' name="data1" class='datepicker-here inp1' placeholder="Выберите дату отъезда" />
     </div>
     <div class="col l4 m12 s12">
-    <button class="waves-effect waves-light btn btn2 uu2" type="submit">ЗАБРОНИРОВАТЬ</button>
+    <a href="/bronirovanie" class="waves-effect waves-light btn btn2 uu2" type="submit">ЗАБРОНИРОВАТЬ</a>
     </div>
     </form>
     </div>
@@ -80,7 +80,7 @@
                 <!--</div>-->
                 <p class="p6">{{ $nomers->opismain }}</p>
                 <p class="p_a"><a href="/nomer{{ $nomers->id }}" class="a2">ПОДРОБНЕЕ ></a></p>
-                <a class="waves-effect waves-light btn btn2 btn3 uu3">ЗАБРОНИРОВАТЬ</a>
+                <a href="/bronirovanie" class="waves-effect waves-light btn btn2 btn3 uu3">ЗАБРОНИРОВАТЬ</a>
                 </div>    
                 </div>
             <div class="col l6 m12 s12 ots">
@@ -90,9 +90,11 @@
 			</div>
 			<div class="frame" id="basic2" style="overflow: hidden;">
 			<ul class="clearfix">
+			    @foreach (json_decode($nomers->images, true) as $image)
 				<li>	  
-				<img src="storage/{{ $nomers->img }}" class="imgye">
+				<img src="{{ URL::to('/storage/'.$image)}}" class="imgye">
 				</li>
+				@endforeach
 			</ul>
 			</div>
             </div>
@@ -211,7 +213,7 @@
        <div class="d1">
          <img src="assets/img/n1.png" class="img2">
        </div>
-       <p class="p11"><span class="sp1">9.1</span>/10</p>
+       <p class="p11"><span class="sp1">8.8</span>/10</p>
       </div>
       <div class="col l2 s12 m6 center">
        <div class="d1">
@@ -223,7 +225,7 @@
        <div class="d1">
          <img src="assets/img/n3.png" class="img2">
        </div>
-       <p class="p11"><span class="sp1">9.1</span>/10</p>
+       <p class="p11"><span class="sp1">4.8</span>/5</p>
       </div>
       <div class="col l2 s12 m6 center">
        <div class="d1">

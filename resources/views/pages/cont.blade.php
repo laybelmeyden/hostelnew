@@ -7,7 +7,7 @@
     <div class="row">
     <div class="col l12 s12 m12 center">
     <p class="p15">НАШИ КОНТАКТЫ</p>
-    <p class="p16">ХОСТЕЛ ИМЕЕТ УДОБНОЕ МЕСТОрасПОЛОЖЕНИЕ с необходимой инфраструктурой </p>
+    <p class="p16">ХОСТЕЛ ИМЕЕТ УДОБНОЕ МЕСТОРАСПОЛОЖЕНИЕ С НЕОБХОДИМОЙ ИНФРАСТРУКТУРОЙ </p>
     </div>
     </div>
     </div>
@@ -33,21 +33,22 @@
     </div>
     <div class="col l6 m12 s12">
         <p class="p25">Если у вас есть какие-то вопросы к нам, заполните форму обратной связи:</p>
-        <form>
+        <form action="/contacts" method="POST">
+        {{ csrf_field() }}
         <div class="input-field col l12 s12 m12">
-          <input placeholder="Ваше имя" name="name" type="text" class="validate inp_con">
+          <input placeholder="Ваше имя" name="name" type="text" class="validate inp_con" required>
         </div>
         <div class="input-field col l12 s12 m12">
-          <input placeholder="E-mail" name="email" type="email" class="validate inp_con">
+          <input placeholder="E-mail" name="email" type="email" class="validate inp_con" required>
         </div>
         <div class="input-field col l12 s12 m12">
-          <input placeholder="Телефон" name="phone" type="text" class="validate inp_con">
+          <input placeholder="Телефон" name="tel" type="text" class="validate inp_con" required>
         </div>
         <div class="input-field col l12 s12 m12">
-          <textarea placeholder="Текст сообщения" class="materialize-textarea inp_con"></textarea>
+          <textarea placeholder="Текст сообщения" name="message" class="materialize-textarea inp_con"></textarea>
         </div>
         <div class="col l12 s12 m12 con_1">
-        <buttom type="submit" class="waves-effect waves-light btn btn5">ОТПРАВИТЬ</buttom>
+        <button type="submit" class="waves-effect waves-light btn btn5">ОТПРАВИТЬ</button>
         </div>
         </form>
     </div>

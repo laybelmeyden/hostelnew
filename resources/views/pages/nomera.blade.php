@@ -29,7 +29,7 @@
     	</span>
     	</a>
     	<div class="nom1">
-    	<a href="{{ $nomers->ssilka }}" class="waves-effect waves-light btn btn_n">ЗАБРОНИРОВАТЬ</a>
+    	<a href="/bronirovanie" class="waves-effect waves-light btn btn_n">ЗАБРОНИРОВАТЬ</a>
     	</div>
 	</div>
     </div>
@@ -37,5 +37,4 @@
     </div>
     </div>
 </section>
-
 @endsection
