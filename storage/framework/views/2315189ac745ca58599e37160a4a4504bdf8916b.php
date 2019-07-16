@@ -1,14 +1,12 @@
-@extends('layouts.master')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <section>
   <div class="paddingnav">
   <div class="slider">
     <ul class="slides">
-        @foreach ($slider as $sliders)
+        <?php $__currentLoopData = $slider; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sliders): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <li>
-        <img src="storage/{{ $sliders->img }}">
+        <img src="storage/<?php echo e($sliders->img); ?>">
         <div class="caption center">
         <div class="container">
         <div class="row">
@@ -16,7 +14,7 @@
         <button class="next z-depth-0  center btnsld"><i class="fa fa-4x fa-angle-left" aria-hidden="true"></i></button>
         </div>
         <div class="col l8 s8 m8">
-        <p class="p10">{{ $sliders->title }}</p>
+        <p class="p10"><?php echo e($sliders->title); ?></p>
         </div>
         <div class="col l2 m2 s2 b2">
         <button class="prev  z-depth-0  center btnsld"><i class="fa fa-4x fa-angle-right" aria-hidden="true"></i></button>
@@ -25,7 +23,7 @@
         </div>
         </div>
         </li>
-        @endforeach
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
       </ul>
   </div>
   </div>
@@ -70,17 +68,17 @@
 <section class="gallery">
             <div class="container">
             <div class="row">
-                @foreach ($nomer as $nomers)
+                <?php $__currentLoopData = $nomer; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $nomers): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="col l6 m12 s12 ots">
                 <div class="b1">
-                <p class="p5_1">{{ $nomers->title }}</p>
+                <p class="p5_1"><?php echo e($nomers->title); ?></p>
                 <!--<div class="c1">-->
                 <!--    <img src="assets/img/o1.png">-->
                 <!--    <img src="assets/img/o1.png">-->
                 <!--    <img src="assets/img/o1.png">-->
                 <!--</div>-->
-                <p class="p6">{{ $nomers->opismain }}</p>
-                <p class="p_a"><a href="/nomer{{ $nomers->id }}" class="a2">ПОДРОБНЕЕ ></a></p>
+                <p class="p6"><?php echo e($nomers->opismain); ?></p>
+                <p class="p_a"><a href="/nomer<?php echo e($nomers->id); ?>" class="a2">ПОДРОБНЕЕ ></a></p>
                 <a href="/bronirovanie" class="waves-effect waves-light btn btn2 btn3 uu3">ЗАБРОНИРОВАТЬ</a>
                 </div>    
                 </div>
@@ -91,15 +89,15 @@
 			</div>
 			<div class="frame" id="basic2" style="overflow: hidden;">
 			<ul class="clearfix">
-			    @foreach (json_decode($nomers->images, true) as $image)
+			    <?php $__currentLoopData = json_decode($nomers->images, true); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $image): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 				<li>	  
-				<img src="{{ URL::to('/storage/'.$image)}}" class="imgye">
+				<img src="<?php echo e(URL::to('/storage/'.$image)); ?>" class="imgye">
 				</li>
-				@endforeach
+				<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 			</ul>
 			</div>
             </div>
-            @endforeach
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
             </div>
         </section>
@@ -176,21 +174,21 @@
 	<div class="col l8 m6 s6">
 	<div id="carousel" class="carus">
 	    <!--цикл-->
-	    @foreach ($rev as $revs)
+	    <?php $__currentLoopData = $rev; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $revs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 	    <div class="col l12 s12 m12">
 	   <div class="col l2 s2 m2">
 	       <img src="assets/img/b1.png"></img>
 	   </div> 
 	   <div class="col l10 m10 s10">
-	       <p class="p8">{{ $revs->title }}</p>
+	       <p class="p8"><?php echo e($revs->title); ?></p>
 	       <div class="chert1"></div>
 	   </div>
 	   <div class="col l2 m2 s2"></div>
 	   <div class="col l10 s10 m10">
-	       <p class="p9">{{ $revs->body }}</p>
+	       <p class="p9"><?php echo e($revs->body); ?></p>
 	   </div>
 	    </div>
-	    @endforeach
+	    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 	    <!--конец цикла-->
 	</div>
 	</div>
@@ -243,4 +241,5 @@
     </div>
   </div>
 </section>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
